@@ -33,26 +33,28 @@ export default function Cadastro() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.textEntrar}>CADASTRO</Text>
+      <Text style={styles.textCadastro}>CADASTRO</Text>
 
-      <Text style={styles.text}>Email</Text>
       <TextInput
         style={styles.input}
+        placeholder='Email...'
         underlineColorAndroid='transparent'
         onChangeText={(texto) => setEmail(texto)}
         value={email}
       />
 
-      <Text style={styles.text}>Senha</Text>
       <TextInput
         style={styles.input}
+        placeholder='Password...'
         underlineColorAndroid='transparent'
         onChangeText={(texto) => setPassword(texto)}
         value={password}
         secureTextEntry={true}
       />
 
-      <Button title='Cadastrar' onPress={cadastrar} />
+      <TouchableOpacity style={styles.cadastroBtn} onPress={cadastrar}>
+        <Text style={styles.cadastroText}>Cadastrar</Text>
+      </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.areaConta}
@@ -65,31 +67,55 @@ export default function Cadastro() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 15
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  textEntrar: {
-    textAlign: 'center',
-    fontSize: 30,
+  textCadastro: {
+    fontSize: 45,
     fontWeight: 'bold',
-    marginTop: 100,
-    marginBottom: 20
-  },
-  text: {
-    fontSize: 18
+    color: "#fb5b5a",
+    marginBottom: 40
   },
   input: {
-    height: 40,
-    padding: 10,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: '#121212',
-    fontSize: 17
+    width: "80%",
+    backgroundColor: "#ccc",
+    borderRadius: 25,
+    height: 50,
+    marginBottom: 20,
+    justifyContent: "center",
+    padding: 10
+  },
+  cadastroBtn: {
+    width: "80%",
+    backgroundColor: "#fb5b5a",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+
+    elevation: 7,
+  },
+  cadastroText: {
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: 'bold'
   },
   areaConta: {
     alignItems: 'center',
     marginTop: 15
   },
   textConta: {
+    color: '#121212',
     fontSize: 15
   }
 });

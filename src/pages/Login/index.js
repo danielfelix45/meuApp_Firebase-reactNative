@@ -6,7 +6,8 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
-  LogBox
+  LogBox,
+  Image
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -35,31 +36,39 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.textEntrar}>ENTRAR</Text>
 
-      <Text style={styles.text}>Email</Text>
+      <Image
+        source={require('../../img/icon2-login.png')}
+        style={styles.img}
+      />
+
+      <Text style={styles.meuApp}>MeuAPP</Text>
+
       <TextInput
         style={styles.input}
+        placeholder='Email...'
         underlineColorAndroid='transparent'
         onChangeText={(texto) => setEmail(texto)}
         value={email}
       />
 
-      <Text style={styles.text}>Senha</Text>
       <TextInput
         style={styles.input}
+        placeholder='Password...'
         underlineColorAndroid='transparent'
         onChangeText={(texto) => setPassword(texto)}
         value={password}
         secureTextEntry={true}
       />
 
-      <Button title='Acessar' onPress={login} />
+      <TouchableOpacity style={styles.loginBtn} onPress={login}>
+        <Text style={styles.loginText}>Login</Text>
+      </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.areaConta}
         onPress={() => navigation.navigate('Cadastro')}>
-        <Text style={styles.textConta}>Criar uma conta</Text>
+        <Text style={styles.textConta}>Fazer cadastro</Text>
       </TouchableOpacity>
     </View>
   );
@@ -67,31 +76,73 @@ export default function Login() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 15,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  textEntrar: {
-    textAlign: 'center',
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginTop: 100,
+  img: {
+    width: 150,
+    height: 150,
     marginBottom: 20
   },
-  text: {
-    fontSize: 18
+  meuApp: {
+    fontWeight: "bold",
+    fontSize: 50,
+    color: "#fb5b5a",
+    marginBottom: 40
   },
   input: {
-    height: 40,
+    width: "80%",
+    fontSize: 17,
+    backgroundColor: "#ddd",
+    borderRadius: 25,
+    height: 50,
+    marginBottom: 20,
+    justifyContent: "center",
     padding: 10,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: '#121212',
-    fontSize: 17
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+
+    elevation: 7,
+
+  },
+  loginBtn: {
+    width: "80%",
+    backgroundColor: "#fb5b5a",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 20,
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+
+    elevation: 7,
+  },
+  loginText: {
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: 'bold'
   },
   areaConta: {
     alignItems: 'center',
     marginTop: 15
   },
   textConta: {
-    fontSize: 15
+    color: '#000',
+    fontSize: 15,
+    fontWeight: 'bold'
   }
 });
